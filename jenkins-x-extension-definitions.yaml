@@ -6,3 +6,6 @@ extensions:
   children:
   - name: jacocoMaven
     namespace: jx
+  - name: spotbugsMaven
+    namespace: jx
+    uuid: 9e5d081e-c7c7-11e8-a8d5-f2801f1b9fd1
