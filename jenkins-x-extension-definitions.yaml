@@ -7,10 +7,10 @@ extensions:
   - name: jacocoMaven
     namespace: jx
     remote: github.com/jenkins-x/ext-jacoco
-    tag: 0.0.63
+    tag: 0.0.7
   - name: spotbugsMaven
     namespace: jx
     uuid: 9e5d081e-c7c7-11e8-a8d5-f2801f1b9fd1
     remote: github.com/jenkins-x/ext-spotbugs
-    tag: 0.0.63
+    tag: 0.0.7
     
