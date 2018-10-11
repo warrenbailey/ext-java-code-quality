@@ -70,7 +70,7 @@ pipeline {
             // release the helm chart
             sh 'jx step helm release'
           }
-          dir ('/home/jenkins/go/src/github.com/jenkins-x/ext-jacoco') {
+          dir ('/home/jenkins/go/src/github.com/jenkins-x/ext-java-code-quality') {
 
             // Run updatebot to update other repos
             sh './updatebot.sh'
