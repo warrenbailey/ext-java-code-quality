@@ -20,11 +20,7 @@ pipeline {
         steps {
           dir ('/home/jenkins/go/src/github.com/jenkins-x/ext-java-code-quality') {
             checkout scm
-            sh "make linux"
-            sh 'export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml'
-
-
-            sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:$PREVIEW_VERSION"
+            sh "make build"
           }
         }
       }
@@ -37,26 +33,17 @@ pipeline {
             git 'https://github.com/jenkins-x/ext-java-code-quality'
           }
           dir ('/home/jenkins/go/src/github.com/jenkins-x/ext-java-code-quality/charts/ext-java-code-quality') {
-              // ensure we're not on a detached head
-              sh "git checkout master"
-              // until we switch to the new kubernetes / jenkins credential implementation use git credentials store
-              sh "git config --global credential.helper store"
 
-              sh "jx step git credentials"
-          }
-          dir ('/home/jenkins/go/src/github.com/jenkins-x/ext-java-code-quality') {
+            // ensure we're not on a detached head
+            sh "git checkout master"
+            // until we switch to the new kubernetes / jenkins credential implementation use git credentials store
+            sh "git config --global credential.helper store"
+
+            sh "jx step git credentials"
             // so we can retrieve the version in later steps
             sh "echo \$(jx-release-version) > VERSION"
-          }
-          dir ('/home/jenkins/go/src/github.com/jenkins-x/ext-java-code-quality/charts/ext-java-code-quality') {
-            sh "make tag"
-          }
-          dir ('/home/jenkins/go/src/github.com/jenkins-x/ext-java-code-quality') {
 
             sh "make build"
-            sh 'export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml'
-
-            sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION)"
           }
         }
       }
@@ -65,14 +52,10 @@ pipeline {
           branch 'master'
         }
         steps {
-          dir ('/home/jenkins/go/src/github.com/jenkins-x/ext-java-code-quality/charts/ext-java-code-quality') {
-            sh 'jx step changelog --version v\$(cat ../../VERSION)'
 
-            // release the helm chart
-            sh 'jx step helm release'
-          }
           dir ('/home/jenkins/go/src/github.com/jenkins-x/ext-java-code-quality') {
-
+            sh 'jx step changelog --version v\$(cat ../../VERSION)'
+            sh "make tag"
             // Run updatebot to update other repos
             sh './updatebot.sh'
           }
