@@ -1,0 +1,27 @@
+apiVersion: jenkins.io/v1
+kind: Release
+metadata:
+  creationTimestamp: "2018-10-14T20:10:09Z"
+  deletionTimestamp: null
+  name: '{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}'
+spec:
+  commits:
+  - author:
+      creationTimestamp: "2018-10-14T19:50:25Z"
+      email: pmuir@bleepbleep.org.uk
+      name: Pete Muir
+    branch: master
+    committer:
+      creationTimestamp: "2018-10-14T19:51:03Z"
+      email: pmuir@bleepbleep.org.uk
+      name: Pete Muir
+    message: 'Fix: simplify jenkinsfile'
+    sha: c87206700964127d7560e4010167cb33a9a3dd47
+  gitCloneUrl: https://github.com/jenkins-x/ext-java-code-quality.git
+  gitHttpUrl: https://github.com/jenkins-x/ext-java-code-quality
+  gitOwner: jenkins-x
+  gitRepository: ext-java-code-quality
+  name: '{{ .Chart.Name }}'
+  releaseNotesURL: https://github.com/jenkins-x/ext-java-code-quality/releases/tag/v
+  version: v
+status: {}
