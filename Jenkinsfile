@@ -32,7 +32,7 @@ pipeline {
           dir ('/home/jenkins/go/src/github.com/jenkins-x/ext-java-code-quality') {
             git 'https://github.com/jenkins-x/ext-java-code-quality'
           }
-          dir ('/home/jenkins/go/src/github.com/jenkins-x/ext-java-code-quality/charts/ext-java-code-quality') {
+          dir ('/home/jenkins/go/src/github.com/jenkins-x/ext-java-code-quality') {
 
             // ensure we're not on a detached head
             sh "git checkout master"
