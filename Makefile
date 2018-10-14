@@ -1,6 +1,7 @@
 all: build
 
 build:
+  echo "Nothing to see here!"
 
 tag:
 	git add --all
