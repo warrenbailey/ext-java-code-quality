@@ -5,6 +5,6 @@ build:
 
 tag:
 	git add --all
-	git commit -m "release $(cat VERSION)" --allow-empty # if first release then no verion update is performed
-	git tag -fa v$(cat VERSION) -m "Release version $(cat VERSION)"
-	git push origin v$(cat VERSION)
+	git commit -m "release ${VERSION}" --allow-empty # if first release then no verion update is performed
+	git tag -fa v${VERSION} -m "Release version $VERSION"
+	git push origin v${VERSION}
