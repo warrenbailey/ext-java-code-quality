@@ -12,5 +12,5 @@ extensions:
     namespace: jx
     uuid: 9e5d081e-c7c7-11e8-a8d5-f2801f1b9fd1
     remote: github.com/jenkins-x/ext-spotbugs
-    tag: v0.0.20
+    tag: v0.0.21
     
