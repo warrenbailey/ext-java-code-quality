@@ -3,3 +3,6 @@ github:
   - name: jenkins-x
     repositories:
     - name: jenkins-x-extensions
+  - name: cloudbees
+    repositories:
+    - name: cloudbees-apps
